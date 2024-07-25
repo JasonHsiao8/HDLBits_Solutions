@@ -14,3 +14,9 @@ module top_module (
         endcase
     end
 endmodule
+/* wire temp_x;
+   always @(posedge clk)begin
+        temp_x = E? w : Q;
+        Q = L? R : temp_x; 
+   end
+*/
