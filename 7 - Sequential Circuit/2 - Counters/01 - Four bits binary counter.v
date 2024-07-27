@@ -5,6 +5,6 @@ module top_module (
 	
     always @(posedge clk)begin
         if(reset) q <= 0;
-        else q <= q + 1'b1;
+        else q <= q + 4'd1;
     end
 endmodule
