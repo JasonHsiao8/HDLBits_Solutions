@@ -5,7 +5,7 @@ module top_module (
     output [2:0] c_enable
 ); //
     wire [3:0]w1, w10, w100;
-    assign c_enable = (w1 == 4'd9 && w10 == 4'd9,w1 == 4'd9,1'b1); //(enable counter2 start counting, counter1 start counting, counter0 count) 
+    assign c_enable = {w1 == 4'd9 && w10 == 4'd9,w1 == 4'd9,1'b1}; //(enable counter2 start counting, counter1 start counting, counter0 count) 
     assign OneHertz = (w1 == 4'd9 && w10 == 4'd9 && w100 == 4'd9); // 999 + 1 times
     
     bcdcount counter0 (clk, reset, c_enable[0], w1);
