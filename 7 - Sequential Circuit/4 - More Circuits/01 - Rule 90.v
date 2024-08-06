@@ -3,6 +3,16 @@ module top_module(
     input load,
     input [511:0] data,
     output [511:0] q ); 
+    always @(posedge clk)begin
+        if(load) q <= data;
+        else q <= {1'b0, q[511:1]} ^ {q[510:0],1'b0}; // left ^ right
+    end
+endmodule
+/*module top_module(
+    input clk,
+    input load,
+    input [511:0] data,
+    output [511:0] q ); 
     //(The name "Rule 90" comes from reading the "next state" column: 01011010 is decimal 90.)
     integer i;
     always @(posedge clk)begin
@@ -15,7 +25,7 @@ module top_module(
             q[511] <= q[510]; // q[511] = q[510]^q[512](0) = q[512]
         end
     end
-endmodule
+endmodule*/
 //center's next state = left right do XOR
 //There is a one-dimensional array of cells (on or off). At each time step, the next state of each
 //cell is the XOR of the cell's two current neighbours. 
